@@ -78,17 +78,12 @@ function inputChanged() {
 
     for (let achievement of achievements) {
         if (achievement.normalized.startsWith(normalized)) {
-            const h3 = document.createElement('h3');
-            h3.innerText = achievement.title;
-
-            const text = document.createTextNode(achievement.riddle);
-
-            const li = document.createElement('li');
-            li.className = 'list-group-item';
-            li.appendChild(h3);
-            li.appendChild(text);
-
-            listGroup.appendChild(li);
+            listGroup.insertAdjacentHTML('beforeend', `
+            <li class="list-group-item">
+            <h3>${achievement.title}</h3>
+            <i>${achievement.riddle}</i>
+            </li>
+            `);
         }
     }
 }
