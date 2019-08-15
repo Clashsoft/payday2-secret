@@ -78,18 +78,47 @@ function inputChanged() {
 
     removeChildren(listGroup);
     for (let achievement of achievements) {
-        if (achievement.normalized.startsWith(normalized)) {
-            listGroup.insertAdjacentHTML('beforeend', `
-            <li class="list-group-item">
-            <img class="float-right" src="${achievement.image}" alt="${achievement.title}">
-            <h3>${achievement.title}</h3>
-            <i>${achievement.riddle}</i>
-            <p>
-            <b>${achievement.desc}</b>
-            </li>
-            `);
+        if (!achievement.normalized.startsWith(normalized)) {
+            continue;
+        }
+
+        let riddleIndex = indexSearch(0, achievement.riddle.length, i => {
+            let normalizedRiddleSub = normalize(achievement.riddle.substring(0, i));
+            return normalizedRiddleSub.length - normalized.length;
+        });
+
+        listGroup.insertAdjacentHTML('beforeend', `
+        <li class="list-group-item">
+        <img class="float-right" src="${achievement.image}" alt="${achievement.title}">
+        <h3>${achievement.title}</h3>
+        <code><u>${achievement.riddle.substring(0, riddleIndex)}</u>${achievement.riddle.substring(riddleIndex)}</code>
+        <p>
+        <b>${achievement.desc}</b>
+        </li>
+        `);
+    }
+}
+
+function indexSearch(min, max, comparator) {
+    let index;
+    while (true) {
+        index = (min + max) >> 1;
+        if (min === max) {
+            break;
+        }
+
+        let compare = comparator(index);
+        if (compare === 0) {
+            break;
+        }
+        if (compare > 0) {
+            max = index - 1;
+        }
+        if (compare < 0) {
+            min = index + 1;
         }
     }
+    return index;
 }
 
 function normalize(text) {
