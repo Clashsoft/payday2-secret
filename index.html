@@ -14,112 +14,103 @@
 	<title>PAYDAY 2 Secret Helper</title>
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-8 text-center">
-			<h1 class="center">PAYDAY 2 Secret Helper</h1>
-			<p>
-				<small>
-					by <a href="https://github.com/Clashsoft/payday2-secret">Clashsoft</a>
-				</small>
-			</p>
-			<p>
-				<img src="https://github.com/r-pufky/payday2-secret/blob/master/cipher-text.jpg?raw=true"
-				     class="img-fluid" alt="Symbol Translation">
-				<small>
-					Image Credit
-					<a href="https://github.com/r-pufky/payday2-secret">r-pufky/payday2-secret</a>
-				</small>
-			</p>
-			<p>
-				<input id="inputField" class="form-control" type="text" oninput="inputChanged()"
-				       onkeypress="submit(event)" placeholder="Start typing the translated letters...">
-			</p>
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="" id="threeSymbolCheckBox"
-				       onclick="inputChanged()">
-				<label class="form-check-label" for="threeSymbolCheckBox">
-					Three-Symbol Mode
-				</label>
-			</div>
-			<div class="alert alert-info" role="alert">
-				<details class="text-left">
-					<summary>
-						How to Use
-					</summary>
-					<p>
-						Before beginning, consult the general steps outlined in
-						<a href="https://github.com/r-pufky/payday2-secret">this guide</a>.
-						This tool serves as an alternative to Ctrl-F on the GitHub page.
-					</p>
-					<h4>Normal Mode</h4>
-					<p>
-						Enter the translation of the symbols in the text field.
-						The more letters you type, the further you can narrow down the list of achievements.
-						When only one is left, you can stop translating the symbols.
-					</p>
-					<h4>Three-Symbol Mode</h4>
-					<p>
-						This is a more sophisticated way of translating the riddles.
-						Instead of starting at the front, you only have to translate three symbols.
-						Those are:
-					</p>
-					<ul>
-						<li>The fifth from the top right.</li>
-						<li>The sixth from the bottom left.</li>
-						<li>The second from the bottom left.</li>
-					</ul>
-					<h5>Example</h5>
-					<p>
-						Say you have the following screenshot:
-					</p>
-					<img class="img-fluid" src="example.png" alt="Example Screenshot"/>
-					<p>
-						You first find the symbols listed above:
-					</p>
-					<img class="img-fluid" src="example_highlighted.png"
-					     alt="Example Screenshot with Highlighted Symbols">
-					<p>
-						The fifth symbol from the top right translates to <kbd>O</kbd>.
-						The sixth symbol from the bottom left is <kbd>E</kbd>.
-						The second symbol from the bottom left is <kbd>A</kbd>.
-						You enter <kbd>OEA</kbd> into the search box.
-						Now the only achievement left is <b>Let Them Boogie</b>, which corresponds to the screenshot.
-					</p>
-					<h4>Shortcuts</h4>
-					<p>
-						Press <kbd>Enter</kbd> to pin the first result and <kbd>Shift+Enter</kbd> to mark it as
-						completed.
-					</p>
-				</details>
-			</div>
-			<ul id="listGroup" class="list-group text-left">
-			</ul>
+<div class="row m-3">
+	<div class="col-md-3">
+		<h3>How to Use</h3>
+		<p>
+			Before beginning, consult the general steps outlined in
+			<a href="https://github.com/r-pufky/payday2-secret">this guide</a>.
+			This tool serves as an alternative to Ctrl-F on the GitHub page.
+		</p>
+		<h4>Normal Mode</h4>
+		<p>
+			Enter the translation of the symbols in the text field.
+			The more letters you type, the further you can narrow down the list of achievements.
+			When only one is left, you can stop translating the symbols.
+		</p>
+		<h4>Three-Symbol Mode</h4>
+		<p>
+			This is a more sophisticated way of translating the riddles.
+			Instead of starting at the front, you only have to translate three symbols.
+			Those are:
+		</p>
+		<ul>
+			<li>The fifth from the top right.</li>
+			<li>The sixth from the bottom left.</li>
+			<li>The second from the bottom left.</li>
+		</ul>
+		<h5>Example</h5>
+		<p>
+			Say you have the following screenshot:
+		</p>
+		<img class="img-fluid" src="example.png" alt="Example Screenshot"/>
+		<p>
+			You first find the symbols listed above:
+		</p>
+		<img class="img-fluid" src="example_highlighted.png"
+		     alt="Example Screenshot with Highlighted Symbols">
+		<p>
+			The fifth symbol from the top right translates to <kbd>O</kbd>.
+			The sixth symbol from the bottom left is <kbd>E</kbd>.
+			The second symbol from the bottom left is <kbd>A</kbd>.
+			You enter <kbd>OEA</kbd> into the search box.
+			Now the only achievement left is <b>Let Them Boogie</b>, which corresponds to the screenshot.
+		</p>
+		<h4>Shortcuts</h4>
+		<p>
+			Press <kbd>Enter</kbd> to pin the first result and <kbd>Shift+Enter</kbd> to mark it as
+			completed.
+		</p>
+	</div>
+	<div class="col-md-6 text-center">
+		<h1 class="center">PAYDAY 2 Secret Helper</h1>
+		<p>
+			<small>
+				by <a href="https://github.com/Clashsoft/payday2-secret">Clashsoft</a>
+			</small>
+		</p>
+		<p>
+			<img src="https://github.com/r-pufky/payday2-secret/blob/master/cipher-text.jpg?raw=true"
+			     class="img-fluid" alt="Symbol Translation">
+			<small>
+				Image Credit
+				<a href="https://github.com/r-pufky/payday2-secret">r-pufky/payday2-secret</a>
+			</small>
+		</p>
+		<div class="form-check">
+			<input id="inputField" class="form-control" type="text" oninput="inputChanged()"
+			       onkeypress="submit(event)" placeholder="Start typing the translated letters...">
+			<input class="form-check-input" type="checkbox" value="" id="threeSymbolCheckBox"
+			       onclick="inputChanged()">
+			<label class="form-check-label" for="threeSymbolCheckBox">
+				Three-Symbol Mode
+			</label>
 		</div>
-		<div class="col-md-4">
-			<h2>Saved Achievements</h2>
-			<ul id="pinnedGroup" class="list-group"></ul>
-			<ul id="completedGroup" class="list-group"></ul>
-			<div class="text-center">
-				<a href="#" onclick="clearSaved()">Clear</a>
-			</div>
+		<p>
+		<ul id="listGroup" class="list-group text-left">
+		</ul>
+	</div>
+	<div class="col-md-3">
+		<h2>Saved Achievements</h2>
+		<ul id="pinnedGroup" class="list-group"></ul>
+		<ul id="completedGroup" class="list-group"></ul>
+		<div class="text-center">
+			<a href="#" onclick="clearSaved()">Clear</a>
 		</div>
 	</div>
-</div>
 
+	<!-- Bootstrap JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	        crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	        crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	        crossorigin="anonymous"></script>
 
-<!-- Bootstrap JavaScript -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-<!-- Custom JS -->
-<script src="index.js"></script>
+	<!-- Custom JS -->
+	<script src="index.js"></script>
 </body>
 </html>
