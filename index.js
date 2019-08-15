@@ -67,15 +67,13 @@ const achievements = achievementData.map(v => ({
 const inputField = document.getElementById('inputField');
 const listGroup = document.getElementById('listGroup');
 
+inputChanged();
+
 function inputChanged() {
     const inputText = inputField.value;
     const normalized = normalize(inputText);
 
     removeChildren(listGroup);
-    if (normalized === "") {
-        return;
-    }
-
     for (let achievement of achievements) {
         if (achievement.normalized.startsWith(normalized)) {
             listGroup.insertAdjacentHTML('beforeend', `
