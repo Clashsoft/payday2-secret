@@ -32,8 +32,11 @@
 				</small>
 			</p>
 			<p>
-				<input id="inputField" type="text" oninput="inputChanged()" class="form-control"
-				       placeholder="Start typing the translated letters...">
+				<input id="inputField" class="form-control" type="text" oninput="inputChanged()"
+				       onkeypress="submit(event)" placeholder="Start typing the translated letters...">
+				<small>
+					Press <kbd>Enter</kbd> to pin the first result and <kbd>Shift+Enter</kbd> to mark it as completed.
+				</small>
 			</p>
 			<ul id="listGroup" class="list-group text-left">
 			</ul>

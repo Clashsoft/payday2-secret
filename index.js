@@ -74,6 +74,7 @@ const pinnedGroup = document.getElementById('pinnedGroup');
 
 let pinned = [];
 let completed = [];
+let first = null;
 
 inputChanged();
 
@@ -81,10 +82,16 @@ function inputChanged() {
     const inputText = inputField.value;
     const normalized = normalize(inputText);
 
+    first = null;
+
     removeChildren(listGroup);
     for (let achievement of achievements) {
         if (!achievement.normalized.startsWith(normalized)) {
             continue;
+        }
+
+        if (!first) {
+            first = achievement;
         }
 
         let riddleIndex = indexSearch(0, achievement.riddle.length, i => {
@@ -103,6 +110,24 @@ function inputChanged() {
         <img class="float-right" onclick="addToCompleted('${achievement.title}')" src="check.svg" width="32" height="32" alt="Add to Completed">
         </li>
         `);
+    }
+}
+
+function submit(event) {
+    if (event.key !== 'Enter') {
+        return;
+    }
+
+    inputField.select();
+    if (!first) {
+        return;
+    }
+
+    if (event.shiftKey) {
+        addToCompleted(first.title);
+    }
+    else {
+        addToPinned(first.title);
     }
 }
 
