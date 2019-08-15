@@ -119,32 +119,71 @@ function render(achievement) {
     `;
 }
 
-function addToPinned(title) {
-    const achievement = getAchievementByTitle(title);
-    if (!achievement || pinned.includes(achievement)) {
-        return;
-    }
-
-    pinned.push(achievement);
-    pinnedGroup.insertAdjacentHTML('beforeend', `
+function renderPinned(achievement) {
+    return `
     <li class="list-group-item bg-secondary text-light">
     ${render(achievement)}
+    <img class="float-right" onclick="removeFromPinned('${achievement.title}')" src="x.svg"
+         width="32" height="32" alt="Remove from Pinned">
+    <img class="float-right" onclick="addToCompleted('${achievement.title}')" src="check.svg"
+        width="32" height="32" alt="Add to Completed">
     </li>
-    `);
+    `;
+}
+
+function renderCompleted(achievement) {
+    return `
+    <li class="list-group-item bg-primary text-light">
+    ${render(achievement)}
+    <img class="float-right" onclick="removeFromCompleted('${achievement.title}')" src="x.svg"
+         width="32" height="32" alt="Remove from Completed">
+    <img class="float-right" onclick="addToPinned('${achievement.title}')" src="pin.svg"
+         width="32" height="32" alt="Add to Pinned">
+    </li>
+    `;
+}
+
+function addToPinned(title) {
+    addTo(title, pinned, pinnedGroup, renderPinned);
+    removeFromCompleted(title);
+}
+
+function removeFromPinned(title) {
+    removeFrom(title, pinned, pinnedGroup, renderPinned);
 }
 
 function addToCompleted(title) {
+    addTo(title, completed, completedGroup, renderCompleted);
+    removeFromPinned(title);
+}
+
+function removeFromCompleted(title) {
+    removeFrom(title, completed, completedGroup, renderCompleted);
+}
+
+function addTo(title, list, listGroup, render) {
     const achievement = getAchievementByTitle(title);
-    if (!achievement || completed.includes(achievement)) {
+    if (!achievement || list.includes(achievement)) {
         return;
     }
 
-    completed.push(achievement);
-    completedGroup.insertAdjacentHTML('beforeend', `
-    <li class="list-group-item bg-primary text-light">
-    ${render(achievement)}
-    </li>
-    `);
+    list.push(achievement);
+    listGroup.insertAdjacentHTML('beforeend', render(achievement));
+}
+
+function removeFrom(title, list, listGroup, render) {
+    const index = list.findIndex(x => x.title === title);
+    if (index < 0) {
+        return;
+    }
+
+    list.splice(index, 1);
+
+    let html = '';
+    for (let achievement of list) {
+        html += render(achievement);
+    }
+    listGroup.innerHTML = html;
 }
 
 function indexSearch(min, max, comparator) {
