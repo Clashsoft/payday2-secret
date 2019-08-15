@@ -70,6 +70,7 @@ const achievements = achievementData.map(v => ({
 }));
 
 const inputField = document.getElementById('inputField');
+const threeSymbolCheckBox = document.getElementById('threeSymbolCheckBox');
 const listGroup = document.getElementById('listGroup');
 const completedGroup = document.getElementById('completedGroup');
 const pinnedGroup = document.getElementById('pinnedGroup');
@@ -96,7 +97,12 @@ function inputChanged() {
 
 	removeChildren(listGroup);
 	for (let achievement of achievements) {
-		if (!achievement.normalized.startsWith(normalized)) {
+		let anorm = achievement.normalized;
+		if (threeSymbolCheckBox.checked) {
+			anorm = `${anorm.charAt(4)}${anorm.charAt(anorm.length - 6)}${anorm.charAt(anorm.length - 2)}`;
+		}
+
+		if (!anorm.startsWith(normalized)) {
 			continue;
 		}
 
@@ -104,7 +110,7 @@ function inputChanged() {
 			first = achievement;
 		}
 
-		let riddleIndex = indexSearch(0, achievement.riddle.length, i => {
+		let riddleIndex = threeSymbolCheckBox.checked ? 0 : indexSearch(0, achievement.riddle.length, i => {
 			let normalizedRiddleSub = normalize(achievement.riddle.substring(0, i));
 			return normalizedRiddleSub.length - normalized.length;
 		});
