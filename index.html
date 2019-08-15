@@ -41,11 +41,57 @@
 					Three-Symbol Mode
 				</label>
 			</div>
-			<p>
-				<small>
-					Press <kbd>Enter</kbd> to pin the first result and <kbd>Shift+Enter</kbd> to mark it as completed.
-				</small>
-			</p>
+			<div class="alert alert-info" role="alert">
+				<details class="text-left">
+					<summary>
+						How to Use
+					</summary>
+					<p>
+						Before beginning, consult the general steps outlined in
+						<a href="https://github.com/r-pufky/payday2-secret">this guide</a>.
+						This tool serves as an alternative to Ctrl-F on the GitHub page.
+					</p>
+					<h4>Normal Mode</h4>
+					<p>
+						Enter the translation of the symbols in the text field.
+						The more letters you type, the further you can narrow down the list of achievements.
+						When only one is left, you can stop translating the symbols.
+					</p>
+					<h4>Three-Symbol Mode</h4>
+					<p>
+						This is a more sophisticated way of translating the riddles.
+						Instead of starting at the front, you only have to translate three symbols.
+						Those are:
+					</p>
+					<ul>
+						<li>The fifth from the top right.</li>
+						<li>The sixth from the bottom left.</li>
+						<li>The second from the bottom left.</li>
+					</ul>
+					<h5>Example</h5>
+					<p>
+						Say you have the following screenshot:
+					</p>
+					<img class="img-fluid" src="example.png" alt="Example Screenshot"/>
+					<p>
+						You first find the symbols listed above:
+					</p>
+					<img class="img-fluid" src="example_highlighted.png"
+					     alt="Example Screenshot with Highlighted Symbols">
+					<p>
+						The fifth symbol from the top right translates to <kbd>O</kbd>.
+						The sixth symbol from the bottom left is <kbd>E</kbd>.
+						The second symbol from the bottom left is <kbd>A</kbd>.
+						You enter <kbd>OEA</kbd> into the search box.
+						Now the only achievement left is <b>Let Them Boogie</b>, which corresponds to the screenshot.
+					</p>
+					<h4>Shortcuts</h4>
+					<p>
+						Press <kbd>Enter</kbd> to pin the first result and <kbd>Shift+Enter</kbd> to mark it as
+						completed.
+					</p>
+				</details>
+			</div>
 			<ul id="listGroup" class="list-group text-left">
 			</ul>
 		</div>
