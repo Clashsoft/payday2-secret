@@ -1,0 +1,3 @@
+li.bg-secondary > img {
+	filter: saturate(0%)
+}

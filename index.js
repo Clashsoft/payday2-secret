@@ -69,6 +69,11 @@ const achievements = achievementData.map(v => ({
 
 const inputField = document.getElementById('inputField');
 const listGroup = document.getElementById('listGroup');
+const completedGroup = document.getElementById('completedGroup');
+const pinnedGroup = document.getElementById('pinnedGroup');
+
+let pinned = [];
+let completed = [];
 
 inputChanged();
 
@@ -94,9 +99,52 @@ function inputChanged() {
         <code><u>${achievement.riddle.substring(0, riddleIndex)}</u>${achievement.riddle.substring(riddleIndex)}</code>
         <p>
         <b>${achievement.desc}</b>
+        <img class="float-right" onclick="addToPinned('${achievement.title}')" src="pin.svg" width="32" height="32" alt="Add to Pinned">
+        <img class="float-right" onclick="addToCompleted('${achievement.title}')" src="check.svg" width="32" height="32" alt="Add to Completed">
         </li>
         `);
     }
+}
+
+function getAchievementByTitle(title) {
+    return achievements.find(x => x.title === title);
+}
+
+function render(achievement) {
+    return `
+    <img class="float-right" src="${achievement.image}" alt="${achievement.title}">
+    <h3>${achievement.title}</h3>
+    <p>
+    <b>${achievement.desc}</b>
+    `;
+}
+
+function addToPinned(title) {
+    const achievement = getAchievementByTitle(title);
+    if (!achievement || pinned.includes(achievement)) {
+        return;
+    }
+
+    pinned.push(achievement);
+    pinnedGroup.insertAdjacentHTML('beforeend', `
+    <li class="list-group-item bg-secondary text-light">
+    ${render(achievement)}
+    </li>
+    `);
+}
+
+function addToCompleted(title) {
+    const achievement = getAchievementByTitle(title);
+    if (!achievement || completed.includes(achievement)) {
+        return;
+    }
+
+    completed.push(achievement);
+    completedGroup.insertAdjacentHTML('beforeend', `
+    <li class="list-group-item bg-primary text-light">
+    ${render(achievement)}
+    </li>
+    `);
 }
 
 function indexSearch(min, max, comparator) {
