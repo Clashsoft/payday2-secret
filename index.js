@@ -143,6 +143,13 @@ function renderCompleted(achievement) {
     `;
 }
 
+function clearSaved() {
+    pinned = [];
+    removeChildren(pinnedGroup);
+    completed = [];
+    removeChildren(completedGroup);
+}
+
 function addToPinned(title) {
     addTo(title, pinned, pinnedGroup, renderPinned);
     removeFromCompleted(title);
