@@ -75,15 +75,62 @@ const listGroup = document.getElementById('listGroup');
 const completedGroup = document.getElementById('completedGroup');
 const pinnedGroup = document.getElementById('pinnedGroup');
 
+// =============== Classes ===============
+
+class AchievementSet {
+	constructor(name) {
+		this.name = name;
+		this.items = this._load();
+	}
+
+	_load() {
+		return (localStorage.getItem(this.name) || '').split("\n").map(getAchievementByTitle).filter(x => x);
+	}
+
+	_save() {
+		localStorage.setItem(this.name, this.items.map(x => x.title).join("\n"));
+	}
+
+	clear() {
+		if (this.items.length > 0) {
+			this.items = [];
+			localStorage.removeItem(this.name);
+		}
+	}
+
+	add(item) {
+		if (this.items.includes(item)) {
+			return false;
+		}
+
+		this.items.push(item);
+		this._save();
+		return true;
+	}
+
+	remove(item) {
+		const index = this.items.findIndex(x => x === item);
+		if (index < 0) {
+			return false;
+		}
+
+		this.items.splice(index, 1);
+		this._save();
+		return true;
+	}
+}
+
 // =============== Variables ===============
 
-let pinned = [];
-let completed = [];
+let pinned = new AchievementSet('pinned');
+let completed = new AchievementSet('completed');
 let first = null;
 
 // =============== Initialization ===============
 
 inputChanged();
+renderAll(pinned.items, renderPinned, pinnedGroup);
+renderAll(completed.items, renderCompleted, completedGroup);
 
 // =============== Functions ===============
 
@@ -202,10 +249,13 @@ function renderAll(list, render, listGroup) {
 // --------------- List Management ---------------
 
 function clearSaved() {
-	pinned = [];
+	clearPinned();
+	clearCompleted();
+}
+
+function clearPinned() {
+	pinned.clear();
 	removeChildren(pinnedGroup);
-	completed = [];
-	removeChildren(completedGroup);
 }
 
 function addToPinned(title) {
@@ -217,6 +267,11 @@ function removeFromPinned(title) {
 	removeFrom(title, pinned, pinnedGroup, renderPinned);
 }
 
+function clearCompleted() {
+	completed.clear();
+	removeChildren(completedGroup);
+}
+
 function addToCompleted(title) {
 	addTo(title, completed, completedGroup, renderCompleted);
 	removeFromPinned(title);
@@ -226,25 +281,17 @@ function removeFromCompleted(title) {
 	removeFrom(title, completed, completedGroup, renderCompleted);
 }
 
-function addTo(title, list, listGroup, render) {
+function addTo(title, set, listGroup, render) {
 	const achievement = getAchievementByTitle(title);
-	if (!achievement || list.includes(achievement)) {
-		return;
+	if (set.add(achievement)) {
+		listGroup.insertAdjacentHTML('beforeend', render(achievement));
 	}
-
-	list.push(achievement);
-	listGroup.insertAdjacentHTML('beforeend', render(achievement));
 }
 
-function removeFrom(title, list, listGroup, render) {
-	const index = list.findIndex(x => x.title === title);
-	if (index < 0) {
-		return;
+function removeFrom(title, set, listGroup, render) {
+	if (set.remove(getAchievementByTitle(title))) {
+		renderAll(set.items, render, listGroup);
 	}
-
-	list.splice(index, 1);
-
-	renderAll(list, render, listGroup);
 }
 
 // --------------- Helpers ---------------
