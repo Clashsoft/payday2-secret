@@ -164,6 +164,7 @@ let first = null;
 pinnedController.other = completedController;
 completedController.other = pinnedController;
 
+threeSymbolCheckBox.checked = localStorage.getItem('threeSymbolMode') === 'true';
 onInputChanged();
 pinnedController.renderAll();
 completedController.renderAll();
@@ -227,6 +228,11 @@ function onSearchSubmit(event) {
 	} else {
 		pinnedController.add(first.title);
 	}
+}
+
+function onThreeSymbolChanged() {
+	this.onInputChanged();
+	localStorage.setItem('threeSymbolMode', threeSymbolCheckBox.checked);
 }
 
 function onClearClicked() {
