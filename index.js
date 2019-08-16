@@ -236,8 +236,10 @@ function onThreeSymbolChanged() {
 }
 
 function onClearClicked() {
-	pinnedController.clear();
-	completedController.clear();
+	if (confirm('Discard all saved achievements? This cannot be undone.')) {
+		pinnedController.clear();
+		completedController.clear();
+	}
 }
 
 // --------------- Search ---------------
