@@ -77,11 +77,11 @@
 				<a href="https://github.com/r-pufky/payday2-secret">r-pufky/payday2-secret</a>
 			</small>
 		</p>
-		<input id="inputField" class="form-control" type="text" oninput="inputChanged()"
-		       onkeypress="submit(event)" placeholder="Start typing the translated letters...">
+		<input id="inputField" class="form-control" type="text" oninput="onInputChanged()"
+		       onkeypress="onSearchSubmit(event)" placeholder="Start typing the translated letters...">
 		<div class="form-check">
 			<input class="form-check-input" type="checkbox" value="" id="threeSymbolCheckBox"
-			       onclick="inputChanged()">
+			       onclick="onInputChanged()">
 			<label class="form-check-label" for="threeSymbolCheckBox">
 				Three-Symbol Mode
 			</label>
@@ -95,7 +95,7 @@
 		<ul id="pinnedGroup" class="list-group"></ul>
 		<ul id="completedGroup" class="list-group"></ul>
 		<div class="text-center">
-			<a href="#" onclick="clearSaved()">Clear</a>
+			<a href="#" onclick="onClearClicked()">Clear</a>
 		</div>
 	</div>
 
