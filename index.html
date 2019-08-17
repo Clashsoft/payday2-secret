@@ -29,7 +29,43 @@
 </noscript>
 
 <div class="row m-3">
-	<div class="col-md-3">
+	<div class="order-0 col-lg-6 order-lg-1 text-center">
+		<h1 class="center">PAYDAY 2 Secret Helper</h1>
+		<p>
+			<small>
+				by <a href="https://github.com/Clashsoft/payday2-secret">Clashsoft</a>
+			</small>
+		</p>
+		<p>
+			<img src="https://github.com/r-pufky/payday2-secret/blob/master/cipher-text.jpg?raw=true"
+			     class="img-fluid" alt="Symbol Translation">
+			<small>
+				Image Credit
+				<a href="https://github.com/r-pufky/payday2-secret">r-pufky/payday2-secret</a>
+			</small>
+		</p>
+		<input id="inputField" class="form-control" type="text" oninput="onInputChanged()"
+		       onkeypress="onSearchSubmit(event)" placeholder="Start typing the translated letters...">
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" value="" id="threeSymbolCheckBox"
+			       onclick="onThreeSymbolChanged()">
+			<label class="form-check-label" for="threeSymbolCheckBox">
+				Three-Symbol Mode
+			</label>
+		</div>
+		<p>
+		<ul id="listGroup" class="list-group text-left">
+		</ul>
+	</div>
+	<div class="order-1 col-lg-3 order-lg-2">
+		<h2>Saved Achievements</h2>
+		<ul id="pinnedGroup" class="list-group"></ul>
+		<ul id="completedGroup" class="list-group"></ul>
+		<div class="text-center">
+			<a href="#" onclick="onClearClicked()">Clear</a>
+		</div>
+	</div>
+	<div class="order-2 col-lg-3 order-lg-0">
 		<h3>How to Use</h3>
 		<p>
 			Before beginning, consult the general steps outlined in
@@ -84,42 +120,6 @@
 			Press <kbd>Enter</kbd> to pin the first result and <kbd>Shift+Enter</kbd> to mark it as
 			completed.
 		</p>
-	</div>
-	<div class="col-md-6 text-center">
-		<h1 class="center">PAYDAY 2 Secret Helper</h1>
-		<p>
-			<small>
-				by <a href="https://github.com/Clashsoft/payday2-secret">Clashsoft</a>
-			</small>
-		</p>
-		<p>
-			<img src="https://github.com/r-pufky/payday2-secret/blob/master/cipher-text.jpg?raw=true"
-			     class="img-fluid" alt="Symbol Translation">
-			<small>
-				Image Credit
-				<a href="https://github.com/r-pufky/payday2-secret">r-pufky/payday2-secret</a>
-			</small>
-		</p>
-		<input id="inputField" class="form-control" type="text" oninput="onInputChanged()"
-		       onkeypress="onSearchSubmit(event)" placeholder="Start typing the translated letters...">
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="threeSymbolCheckBox"
-			       onclick="onThreeSymbolChanged()">
-			<label class="form-check-label" for="threeSymbolCheckBox">
-				Three-Symbol Mode
-			</label>
-		</div>
-		<p>
-		<ul id="listGroup" class="list-group text-left">
-		</ul>
-	</div>
-	<div class="col-md-3">
-		<h2>Saved Achievements</h2>
-		<ul id="pinnedGroup" class="list-group"></ul>
-		<ul id="completedGroup" class="list-group"></ul>
-		<div class="text-center">
-			<a href="#" onclick="onClearClicked()">Clear</a>
-		</div>
 	</div>
 
 	<!-- Bootstrap JavaScript -->
