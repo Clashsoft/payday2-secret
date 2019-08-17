@@ -533,6 +533,11 @@ function onClearClicked() {
 	}
 }
 
+function onCopyClicked() {
+	const text = [...pinned.items, ...completed.items].map(x => x.title).join('\n');
+	copyToClipboard(text);
+}
+
 // --------------- Search ---------------
 
 function normalize(text) {
@@ -614,4 +619,13 @@ function removeChildren(node) {
 	while (node.lastChild) {
 		node.removeChild(node.lastChild);
 	}
+}
+
+function copyToClipboard(text) {
+	const textarea = document.createElement('textarea');
+	textarea.value = text;
+	document.body.append(textarea);
+	textarea.select();
+	document.execCommand('copy');
+	textarea.remove();
 }
