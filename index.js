@@ -61,13 +61,17 @@ const achievementData = [
 	["The Pacifist", "While Stealing A bomb from a train the four thieves did not spill a single drop of blood", "Complete the Murky Station job without anyone in the crew killing anyone.", "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/218620/d255432c8e71083e9702db564a2759db71aa25d4.jpg"],
 ];
 
-const achievements = achievementData.map(v => ({
-	title: v[0],
-	riddle: v[1],
-	normalized: normalize(v[1]),
-	desc: v[2],
-	image: v[3],
-}));
+const achievements = achievementData.map(v => {
+	const n = normalize(v[1]);
+	return {
+		title: v[0],
+		riddle: v[1],
+		normalized: n,
+		threeSymbols: `${n.charAt(4)}${n.charAt(n.length - 6)}${n.charAt(n.length - 2)}`,
+		desc: v[2],
+		image: v[3],
+	}
+});
 
 const inputField = document.getElementById('inputField');
 const threeSymbolCheckBox = document.getElementById('threeSymbolCheckBox');
@@ -181,10 +185,7 @@ function onInputChanged() {
 
 	removeChildren(listGroup);
 	for (let achievement of achievements) {
-		let anorm = achievement.normalized;
-		if (threeSymbolCheckBox.checked) {
-			anorm = `${anorm.charAt(4)}${anorm.charAt(anorm.length - 6)}${anorm.charAt(anorm.length - 2)}`;
-		}
+		let anorm = threeSymbolCheckBox.checked ? achievement.threeSymbols : achievement.normalized;
 
 		if (!anorm.startsWith(normalized)) {
 			continue;
