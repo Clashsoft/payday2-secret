@@ -67,7 +67,7 @@ const achievements = achievementData.map(v => {
 		title: v[0],
 		riddle: v[1],
 		normalized: n,
-		threeSymbols: `${n.charAt(4)}${n.charAt(n.length - 6)}${n.charAt(n.length - 2)}`,
+		threeSymbols: `${n.charAt(n.length - 2)}${n.charAt(n.length - 6)}${n.charAt(4)}`,
 		desc: v[2],
 		image: v[3],
 	}
