@@ -351,9 +351,10 @@ const achievementData = [
 	],
 ];
 
-const achievements = achievementData.map(v => {
+const achievements = achievementData.map((v, i) => {
 	const n = normalize(v[1]);
 	return {
+		id: i,
 		title: v[0],
 		riddle: v[1],
 		normalized: n,
@@ -426,16 +427,16 @@ class AchievementController {
 		removeChildren(this.group);
 	}
 
-	add(title) {
-		const a = getAchievementByTitle(title);
+	add(id) {
+		const a = getAchievementById(id);
 		if (this.set.add(a)) {
 			this.group.insertAdjacentHTML('beforeend', this.render(a));
-			this.other.remove(title);
+			this.other.remove(id);
 		}
 	}
 
-	remove(title) {
-		if (this.set.remove(getAchievementByTitle(title))) {
+	remove(id) {
+		if (this.set.remove(getAchievementById(id))) {
 			this.renderAll();
 		}
 	}
@@ -497,8 +498,8 @@ function onInputChanged() {
         <code><u>${achievement.riddle.substring(0, riddleIndex)}</u>${achievement.riddle.substring(riddleIndex)}</code>
         <p>
         <b>${achievement.desc}</b>
-        <img class="float-right" onclick="pinnedController.add('${achievement.title}');" src="pin.svg" width="32" height="32" alt="Add to Pinned">
-        <img class="float-right" onclick="completedController.add('${achievement.title}');" src="check.svg" width="32" height="32" alt="Add to Completed">
+        <img class="float-right" onclick="pinnedController.add(${achievement.id});" src="pin.svg" width="32" height="32" alt="Add to Pinned">
+        <img class="float-right" onclick="completedController.add(${achievement.id});" src="check.svg" width="32" height="32" alt="Add to Completed">
         </li>
         `);
 	}
@@ -548,6 +549,10 @@ function getAchievementByTitle(title) {
 	return achievements.find(x => x.title === title);
 }
 
+function getAchievementById(id) {
+	return achievements[id];
+}
+
 // --------------- Rendering ---------------
 
 function render(achievement) {
@@ -563,9 +568,9 @@ function renderPinned(achievement) {
 	return `
     <li class="list-group-item bg-secondary text-light">
     ${render(achievement)}
-    <img class="float-right" onclick="pinnedController.remove('${achievement.title}');" src="x.svg"
+    <img class="float-right" onclick="pinnedController.remove(${achievement.id});" src="x.svg"
          width="32" height="32" alt="Remove from Pinned">
-    <img class="float-right" onclick="completedController.add('${achievement.title}');" src="check.svg"
+    <img class="float-right" onclick="completedController.add(${achievement.id});" src="check.svg"
         width="32" height="32" alt="Add to Completed">
     </li>
     `;
@@ -575,9 +580,9 @@ function renderCompleted(achievement) {
 	return `
     <li class="list-group-item bg-primary text-light">
     ${render(achievement)}
-    <img class="float-right" onclick="completedController.remove('${achievement.title}');" src="x.svg"
+    <img class="float-right" onclick="completedController.remove(${achievement.id});" src="x.svg"
          width="32" height="32" alt="Remove from Completed">
-    <img class="float-right" onclick="pinnedController.add('${achievement.title}');" src="pin.svg"
+    <img class="float-right" onclick="pinnedController.add(${achievement.id});" src="pin.svg"
          width="32" height="32" alt="Add to Pinned">
     </li>
     `;
