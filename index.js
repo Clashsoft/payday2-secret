@@ -498,8 +498,8 @@ function onInputChanged() {
         <code><u>${achievement.riddle.substring(0, riddleIndex)}</u>${achievement.riddle.substring(riddleIndex)}</code>
         <p>
         <b>${achievement.desc}</b>
-        <img class="float-right" onclick="pinnedController.add(${achievement.id});" src="pin.svg" width="32" height="32" alt="Add to Pinned">
-        <img class="float-right" onclick="completedController.add(${achievement.id});" src="check.svg" width="32" height="32" alt="Add to Completed">
+        <img class="float-right" onclick="pinnedController.add(${achievement.id});" src="img/pin.svg" width="32" height="32" alt="Add to Pinned">
+        <img class="float-right" onclick="completedController.add(${achievement.id});" src="img/check.svg" width="32" height="32" alt="Add to Completed">
         </li>
         `);
 	}
@@ -568,9 +568,9 @@ function renderPinned(achievement) {
 	return `
     <li class="list-group-item bg-secondary text-light">
     ${render(achievement)}
-    <img class="float-right" onclick="pinnedController.remove(${achievement.id});" src="x.svg"
+    <img class="float-right" onclick="pinnedController.remove(${achievement.id});" src="img/x.svg"
          width="32" height="32" alt="Remove from Pinned">
-    <img class="float-right" onclick="completedController.add(${achievement.id});" src="check.svg"
+    <img class="float-right" onclick="completedController.add(${achievement.id});" src="img/check.svg"
         width="32" height="32" alt="Add to Completed">
     </li>
     `;
@@ -580,9 +580,9 @@ function renderCompleted(achievement) {
 	return `
     <li class="list-group-item bg-primary text-light">
     ${render(achievement)}
-    <img class="float-right" onclick="completedController.remove(${achievement.id});" src="x.svg"
+    <img class="float-right" onclick="completedController.remove(${achievement.id});" src="img/x.svg"
          width="32" height="32" alt="Remove from Completed">
-    <img class="float-right" onclick="pinnedController.add(${achievement.id});" src="pin.svg"
+    <img class="float-right" onclick="pinnedController.add(${achievement.id});" src="img/pin.svg"
          width="32" height="32" alt="Add to Pinned">
     </li>
     `;
