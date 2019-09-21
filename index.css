@@ -1,3 +1,12 @@
 li.bg-secondary > img {
 	filter: saturate(0%)
 }
+
+[data-theme="dark"] img.icon {
+	filter: invert(1);
+}
+
+[data-theme="dark"] .form-control {
+	color:            #fff;
+	background-color: #222;
+}
