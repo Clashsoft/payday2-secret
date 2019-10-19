@@ -8,8 +8,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<!-- Dark mode CSS from dark-mode-switch -->
-	<link rel="stylesheet" href="https://coliff.github.io/dark-mode-switch/dark-mode.css"/>
+	<!-- Dark mode CSS -->
+	<link rel="stylesheet" href="../darkmode/darktheme.css"/>
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="index.css">
@@ -17,6 +17,9 @@
 	<title>PAYDAY 2 Secret Helper</title>
 </head>
 <body>
+
+<script src="../darkmode/theme.js"></script>
+
 <noscript>
 	<div class="alert alert-warning text-center" role="alert">
 		<h4 class="alert-heading">JavaScript is disabled!</h4>
@@ -54,10 +57,7 @@
 			       onclick="onThreeSymbolChanged()">
 			<label class="custom-control-label" for="threeSymbolCheckBox">Three-Symbol Mode</label>
 		</div>
-		<div class="custom-control custom-switch">
-			<input type="checkbox" class="custom-control-input" id="darkSwitch">
-			<label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-		</div>
+		<script src="../darkmode/darkswitch.js"></script>
 		<p>
 		<ul id="listGroup" class="list-group text-left">
 		</ul>
@@ -179,8 +179,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<!-- dark-mode-switch.js -->
-<script src="https://coliff.github.io/dark-mode-switch/dark-mode-switch.min.js"></script>
 <!-- Custom JS -->
 <script src="index.js"></script>
 </body>
