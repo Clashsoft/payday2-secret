@@ -429,14 +429,15 @@ class AchievementController {
 
 	add(id) {
 		const a = getAchievementById(id);
-		if (this.set.add(a)) {
+		if (a && this.set.add(a)) {
 			this.group.insertAdjacentHTML('beforeend', this.render(a));
 			this.other.remove(id);
 		}
 	}
 
 	remove(id) {
-		if (this.set.remove(getAchievementById(id))) {
+		const a = getAchievementById(id);
+		if (a && this.set.remove(a)) {
 			this.renderAll();
 		}
 	}
@@ -516,9 +517,9 @@ function onSearchSubmit(event) {
 	}
 
 	if (event.shiftKey) {
-		completedController.add(first.title);
+		completedController.add(first.id);
 	} else {
-		pinnedController.add(first.title);
+		pinnedController.add(first.id);
 	}
 }
 
