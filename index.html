@@ -51,16 +51,23 @@
 	</p>
 	<input id="inputField" class="form-control" type="text" oninput="onInputChanged()"
 	       onkeypress="onSearchSubmit(event)" placeholder="Start typing the translated letters...">
-	<div class="custom-control custom-switch">
-		<input type="checkbox" class="custom-control-input" id="threeSymbolCheckBox" value=""
-		       onclick="onThreeSymbolChanged()">
-		<label class="custom-control-label" for="threeSymbolCheckBox">Three-Symbol Mode</label>
-	</div>
-	<script src="../darkmode/darkswitch.js"></script>
-	<a href="#" data-toggle="modal" data-target="#helpModal">How to Use</a>
-	&bullet;
-	<a href="#" data-toggle="modal" data-target="#saveModal">Saved</a>
-	<p>
+	<form class="mt-3 mb-3 form-inline align-items-baseline justify-content-center">
+		<div class="mr-2">
+			<a href="#" data-toggle="modal" data-target="#helpModal">How to Use</a>
+			&bullet;
+			<a href="#" data-toggle="modal" data-target="#saveModal">Saved</a>
+			&bullet;
+			Options:
+		</div>
+		<div class="mr-2 custom-control custom-switch">
+			<input type="checkbox" class="custom-control-input" id="threeSymbolCheckBox" value=""
+			       onclick="onThreeSymbolChanged()">
+			<label class="custom-control-label" for="threeSymbolCheckBox">Three-Symbol Mode</label>
+		</div>
+		<div class="mr-2">
+			<script src="../darkmode/darkswitch.js"></script>
+		</div>
+	</form>
 	<ul id="listGroup" class="list-group text-left"></ul>
 </div>
 
