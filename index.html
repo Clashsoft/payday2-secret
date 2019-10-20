@@ -58,6 +58,7 @@
 			<label class="custom-control-label" for="threeSymbolCheckBox">Three-Symbol Mode</label>
 		</div>
 		<script src="../darkmode/darkswitch.js"></script>
+		<a href="#" data-toggle="modal" data-target="#helpModal">How to Use</a>
 		<p>
 		<ul id="listGroup" class="list-group text-left">
 		</ul>
@@ -72,90 +73,112 @@
 			<a href="#" onclick="onCopyClicked()">Copy</a>
 		</div>
 	</div>
-	<div class="order-2 col-lg-3 order-lg-0 text-justify">
-		<h3>How to Use</h3>
-		<p>
-			Before beginning, consult the general steps outlined in
-			<a href="https://github.com/r-pufky/payday2-secret">this guide</a>.
-			This tool serves as an alternative to Ctrl-F on the GitHub page.
-		</p>
-		<h4>Prefix Mode</h4>
-		<p>
-			Enter the translation of the symbols in the text field.
-			Remember that the riddles are read from right to left, top to bottom.
-			The more letters you type, the further you can narrow down the list of achievements.
-			When only one is left, you can stop translating the symbols.
-		</p>
-		<h4>Three-Symbol Mode</h4>
-		<p>
-			This is a more sophisticated way of translating the riddles.
-			Instead of starting at the top right, you only have to translate three specific symbols.
-			They are chosen in such a way that they narrow down the list to one achievement every time.
-			These symbols are, in the order you have to enter them into the text field:
-		</p>
-		<ul>
-			<li>The second from the bottom left.</li>
-			<li>The sixth from the bottom left.</li>
-			<li>The fifth from the top right.</li>
-		</ul>
-		<p>
-			In some cases, you can stop after one or two letters with only one achievement left.
-		</p>
-		<h5>Example</h5>
-		<p>
-			Say you have the following screenshot:
-		</p>
-		<p>
-			<img class="img-fluid" src="img/example.png" alt="Example Screenshot"/>
-		</p>
-		<p>
-			You first find the symbols listed above:
-		</p>
-		<p>
-			<img class="img-fluid" src="img/example_highlighted.png"
-			     alt="Example Screenshot with Highlighted Symbols">
-		</p>
-		<p>
-			The second symbol from the bottom left is <kbd>A</kbd>.
-			The sixth symbol from the bottom left is <kbd>E</kbd>.
-			The fifth symbol from the top right translates to <kbd>O</kbd>.
-			You enter <kbd>AEO</kbd> into the search box.
-			Now the only achievement left is <b>Let Them Boogie</b>, which corresponds to the screenshot.
-		</p>
-		<h4>Saved Achievements</h4>
-		<p>
-			By clicking the <img class="icon" src="img/check.svg" alt="Add to Completed"> icon of an achievement,
-			you can add it to your list of completed achievements.
-			They are shown under "Saved Achievements" in blue.
-			The <img class="icon" src="img/pin.svg" alt="Add to Pinned"> icon adds it to the pinned achievements,
-			shown in gray.
-			This way, you can track which achievements you already have and which ones you have to complete in order to
-			meet the secret ending criteria.
-		</p>
-		<p>
-			To remove an achievement from the saved list, you can click on
-			<img class="icon" src="img/x.svg" alt="Remove from Pinned/Completed">.
-			Click "Clear" to remove all achievements at once from the list.
-		</p>
-		<p>
-			All saved achievements are stored locally in your browser and will be restored the next time you open the
-			page.
-			Click "Copy" to copy a list of names of all saved achievements to the clipboard.
-			You can then paste and store them elsewhere.
-		</p>
-		<h5>Shortcuts</h5>
-		<p>
-			Press <kbd>Enter</kbd> to pin the first search result and <kbd>Shift+Enter</kbd> to mark it as completed.
-			This works in both modes.
-		</p>
-		<h4>Contact</h4>
-		<p>
-			For bug reports, feature requests or general questions you can
-			<a href="https://github.com/Clashsoft/payday2-secret/issues/new/choose">create an issue on GitHub</a> and I
-			will be happy to assist.
-			Changes in the form of <a href="https://github.com/Clashsoft/payday2-secret/pulls">pull requests</a> are
-			also welcome.
-		</p>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content bg-light">
+			<div class="modal-header">
+				<h5 class="modal-title">How to Use</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-justify">
+				<p>
+					Before beginning, consult the general steps outlined in
+					<a href="https://github.com/r-pufky/payday2-secret">this guide</a>.
+					This tool serves as an alternative to Ctrl-F on the GitHub page.
+				</p>
+				<h6>Prefix Mode</h6>
+				<p>
+					Enter the translation of the symbols in the text field.
+					Remember that the riddles are read from right to left, top to bottom.
+					The more letters you type, the further you can narrow down the list of achievements.
+					When only one is left, you can stop translating the symbols.
+				</p>
+				<h6>Three-Symbol Mode</h6>
+				<p>
+					This is a more sophisticated way of translating the riddles.
+					Instead of starting at the top right, you only have to translate three specific symbols.
+					They are chosen in such a way that they narrow down the list to one achievement every time.
+					These symbols are, in the order you have to enter them into the text field:
+				</p>
+				<ul>
+					<li>The second from the bottom left.</li>
+					<li>The sixth from the bottom left.</li>
+					<li>The fifth from the top right.</li>
+				</ul>
+				<p>
+					In some cases, you can stop after one or two letters with only one achievement left.
+				</p>
+				<h5>Example</h5>
+				<p>
+					Say you have the following screenshot:
+				</p>
+				<p>
+					<img class="img-fluid" src="img/example.png" alt="Example Screenshot"/>
+				</p>
+				<p>
+					You first find the symbols listed above:
+				</p>
+				<p>
+					<img class="img-fluid" src="img/example_highlighted.png"
+					     alt="Example Screenshot with Highlighted Symbols">
+				</p>
+				<p>
+					The second symbol from the bottom left is <kbd>A</kbd>.
+					The sixth symbol from the bottom left is <kbd>E</kbd>.
+					The fifth symbol from the top right translates to <kbd>O</kbd>.
+					You enter <kbd>AEO</kbd> into the search box.
+					Now the only achievement left is <b>Let Them Boogie</b>, which corresponds to the screenshot.
+				</p>
+				<h6>Saved Achievements</h6>
+				<p>
+					By clicking the <img class="icon" src="img/check.svg" alt="Add to Completed"> icon of an
+					achievement,
+					you can add it to your list of completed achievements.
+					They are shown under "Saved Achievements" in blue.
+					The <img class="icon" src="img/pin.svg" alt="Add to Pinned"> icon adds it to the pinned
+					achievements,
+					shown in gray.
+					This way, you can track which achievements you already have and which ones you have to complete in
+					order to
+					meet the secret ending criteria.
+				</p>
+				<p>
+					To remove an achievement from the saved list, you can click on
+					<img class="icon" src="img/x.svg" alt="Remove from Pinned/Completed">.
+					Click "Clear" to remove all achievements at once from the list.
+				</p>
+				<p>
+					All saved achievements are stored locally in your browser and will be restored the next time you
+					open the
+					page.
+					Click "Copy" to copy a list of names of all saved achievements to the clipboard.
+					You can then paste and store them elsewhere.
+				</p>
+				<h5>Shortcuts</h5>
+				<p>
+					Press <kbd>Enter</kbd> to pin the first search result and <kbd>Shift+Enter</kbd> to mark it as
+					completed.
+					This works in both modes.
+				</p>
+				<h6>Contact</h6>
+				<p>
+					For bug reports, feature requests or general questions you can
+					<a href="https://github.com/Clashsoft/payday2-secret/issues/new/choose">create an issue on
+					                                                                        GitHub</a> and I
+					will be happy to assist.
+					Changes in the form of <a href="https://github.com/Clashsoft/payday2-secret/pulls">pull requests</a>
+					are
+					also welcome.
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
 	</div>
 </div>
 
