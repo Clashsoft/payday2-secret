@@ -493,7 +493,7 @@ function onInputChanged() {
 		});
 
 		listGroup.insertAdjacentHTML('beforeend', `
-        <li class="bg-light list-group-item">
+        <li class="list-group-item">
         <img class="float-right" src="${achievement.image}" alt="${achievement.title}">
         <h3>${achievement.title}</h3>
         <code><u>${achievement.riddle.substring(0, riddleIndex)}</u>${achievement.riddle.substring(riddleIndex)}</code>
